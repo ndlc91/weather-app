@@ -2,7 +2,7 @@ import React from 'react';
 
 const ToggleScale = ({ toggleTempScale }) => {
   return (
-    <div>
+    <div style={styles.buttonContainer}>
       <button type='button' onClick={() => toggleTempScale(true)}>
         F°
       </button>
@@ -11,6 +11,15 @@ const ToggleScale = ({ toggleTempScale }) => {
       </button>
     </div>
   );
+};
+
+const styles = {
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingTop: '20px',
+  },
 };
 
 export default ToggleScale;
