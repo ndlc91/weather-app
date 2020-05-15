@@ -1,8 +1,9 @@
 import React, { useState, Fragment } from 'react';
 import axios from 'axios';
 import Search from './components/Search';
-import './App.css';
+import Header from './components/Header';
 import ToggleScale from './components/ToggleScale';
+import Card from './components/Card';
 
 function App() {
   // Store weather data from API
@@ -82,13 +83,30 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <Search getData={getData} />
-      <ToggleScale toggleTempScale={toggleTempScale} />
-      <div>{city}</div>
-      {content}
+    <div style={styles.app}>
+      <div style={styles.overlay}>
+        <Header />
+        <Card>
+          <Search getData={getData} />
+          {content}
+          <ToggleScale toggleTempScale={toggleTempScale} />
+        </Card>
+      </div>
     </div>
   );
 }
+
+const styles = {
+  app: {
+    height: '100vh',
+    backgroundImage: "url('/images/clouds2.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  overlay: {
+    backgroundColor: 'rgba(60, 60, 60, .3)',
+    height: '100vh',
+  },
+};
 
 export default App;
